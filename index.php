@@ -63,6 +63,10 @@ if(isset($_POST['save']))
 <div class="container mt-5">
 
 <h1 class="text-center mb-4">
+    Student Management System - AWS CI/CD Working 🚀
+</h1>
+
+<h1 class="text-center mb-4">
     Student Management System
 </h1>
 
