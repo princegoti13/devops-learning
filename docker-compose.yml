@@ -1,5 +1,4 @@
 services:
-
   php-app:
     build: .
     ports:
@@ -12,3 +11,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: studentdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
