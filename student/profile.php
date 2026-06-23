@@ -45,7 +45,7 @@ $user = mysqli_fetch_assoc($query);
         }
         ?>
 
-        <div class="text-center mb-4">
+        <div class="mb-4">
 
             <img src="<?php echo $photoPath; ?>"
                 width="220"
