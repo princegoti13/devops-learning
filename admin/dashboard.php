@@ -184,7 +184,7 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
         <table class="table table-bordered table-striped">
 
             <tr>
-
+                <th>Photo</th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -201,6 +201,12 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
             ?>
 
                 <tr>
+                    <td>
+                        <img src="<?php echo $photoPath; ?>"
+                            width="60"
+                            height="60"
+                            class="rounded-circle">
+                    </td>
 
                     <td><?php echo $row['id']; ?></td>
 
