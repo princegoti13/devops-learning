@@ -21,6 +21,9 @@ if (isset($_POST['register'])) {
     ) {
         $message = "Invalid Email Address";
         $messageType = "danger";
+    } elseif (!preg_match('/^[0-9]{10}$/', $mobile)) {
+        $message = "Mobile Number Must Be 10 Digits";
+        $messageType = "danger";
     } else {
         $check = mysqli_query(
             $conn,
@@ -128,6 +131,10 @@ if (isset($_POST['register'])) {
                             <input type="text"
                                 name="mobile"
                                 class="form-control"
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                minlength="10"
+                                title="Enter 10 Digit Mobile Number"
                                 required>
                         </div>
 
