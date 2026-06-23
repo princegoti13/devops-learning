@@ -22,6 +22,40 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
         $_GET['search']
     );
 
+    $totalStudents = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users WHERE role='student'"
+        )
+    );
+
+    $totalMale = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND gender='Male'"
+        )
+    );
+
+    $totalFemale = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND gender='Female'"
+        )
+    );
+
+    $totalBCA = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND course='BCA'"
+        )
+    );
+
     $result = mysqli_query(
         $conn,
         "SELECT * FROM users
@@ -32,6 +66,33 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
          )"
     );
 } else {
+    $totalMale = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND gender='Male'"
+        )
+    );
+
+    $totalFemale = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND gender='Female'"
+        )
+    );
+
+    $totalBCA = mysqli_num_rows(
+        mysqli_query(
+            $conn,
+            "SELECT * FROM users
+         WHERE role='student'
+         AND course='BCA'"
+        )
+    );
+
     $result = mysqli_query(
         $conn,
         "SELECT * FROM users
@@ -68,13 +129,43 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
             Logout
         </a>
 
-        <div class="card p-3 mb-4">
+        <div class="row mb-4">
 
-            <h4>Total Students</h4>
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h2><?php echo $totalStudents; ?></h2>
+                        <h5>Total Students</h5>
+                    </div>
+                </div>
+            </div>
 
-            <h2>
-                <?php echo $totalStudents; ?>
-            </h2>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h2><?php echo $totalMale; ?></h2>
+                        <h5>Male Students</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h2><?php echo $totalFemale; ?></h2>
+                        <h5>Female Students</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body text-center">
+                        <h2><?php echo $totalBCA; ?></h2>
+                        <h5>BCA Students</h5>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
