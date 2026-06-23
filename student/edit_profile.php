@@ -42,22 +42,10 @@ if (isset($_POST['update'])) {
             mkdir($uploadDir, 0777, true);
         }
 
-        if (
-            move_uploaded_file(
-                $_FILES['photo']['tmp_name'],
-                $uploadDir . $photoName
-            )
-        ) {
-            die("UPLOAD SUCCESS");
+        if (copy($_FILES['photo']['tmp_name'], $uploadDir . $photoName)) {
+            die("COPY SUCCESS");
         } else {
-            echo "<pre>";
-            print_r($_FILES);
-            echo "</pre>";
-
-            echo "<br>Upload Dir : " . $uploadDir;
-            echo "<br>Photo Name : " . $photoName;
-
-            die("<br>UPLOAD FAILED");
+            die("COPY FAILED");
         }
     }
 
