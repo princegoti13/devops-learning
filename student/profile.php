@@ -45,15 +45,15 @@ $user = mysqli_fetch_assoc($query);
         }
         ?>
 
-        <div class="mb-3 text-center">
+        <div class="text-center mb-4">
+
             <img src="<?php echo $photoPath; ?>"
-                width="150"
-                height="150"
+                width="220"
+                height="220"
                 class="rounded-circle"
                 style="object-fit:cover;border:4px solid #ccc;">
+
         </div>
-
-
 
         <p>
             Welcome,
