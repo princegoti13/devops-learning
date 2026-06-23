@@ -11,6 +11,13 @@ $id = $_SESSION['user_id'];
 
 $message = "";
 
+$query = mysqli_query(
+    $conn,
+    "SELECT * FROM users WHERE id='$id'"
+);
+
+$user = mysqli_fetch_assoc($query);
+
 if (isset($_POST['update'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -19,7 +26,22 @@ if (isset($_POST['update'])) {
     $course = $_POST['course'];
     $semester = $_POST['semester'];
     $address = $_POST['address'];
-    $photoName = "";
+    $photoName = $user['photo'];
+
+    if (!empty($_FILES['photo']['name'])) {
+        $photoName = time() . "_" . $_FILES['photo']['name'];
+
+        $uploadDir = __DIR__ . "/../uploads/";
+
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        move_uploaded_file(
+            $_FILES['photo']['tmp_name'],
+            $uploadDir . $photoName
+        );
+    }
 
     $sql = "UPDATE users SET
         name='$name',
@@ -35,7 +57,7 @@ if (isset($_POST['update'])) {
     if (mysqli_query($conn, $sql)) {
         $message = "Profile Updated Successfully";
     } else {
-        $message = "Error : " . mysqli_error($conn);
+        $message = mysqli_error($conn);
     }
 
     if (!empty($_FILES['photo']['name'])) {
