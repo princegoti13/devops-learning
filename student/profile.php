@@ -1,9 +1,8 @@
 <?php
 session_start();
-include '../db.php';
+require_once __DIR__ . '/../db.php';
 
-if(!isset($_SESSION['role']) || $_SESSION['role'] != 'student')
-{
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'student') {
     header("Location: ../login.php");
     exit();
 }
@@ -20,78 +19,94 @@ $user = mysqli_fetch_assoc($query);
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>Student Profile</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+    <title>Student Profile</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
+
 <body>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-<h1>Student Profile</h1>
+        <h1>Student Profile</h1>
 
-<p>
-Welcome,
-<b><?php echo $user['name']; ?></b>
-</p>
+        <?php
+        if (!empty($user['photo'])) {
+        ?>
 
-<a href="edit_profile.php"
-   class="btn btn-warning mb-3">
-Edit Profile
-</a>
+            <img src="../uploads/<?php echo $user['photo']; ?>"
+                width="150"
+                height="150"
+                class="rounded-circle mb-3">
 
-<a href="../logout.php"
-   class="btn btn-danger mb-3">
-Logout
-</a>
+        <?php
+        }
+        ?>
 
-<table class="table table-bordered">
+        <p>
+            Welcome,
+            <b><?php echo $user['name']; ?></b>
+        </p>
 
-<tr>
-<th>Name</th>
-<td><?php echo $user['name']; ?></td>
-</tr>
+        <a href="edit_profile.php"
+            class="btn btn-warning mb-3">
+            Edit Profile
+        </a>
 
-<tr>
-<th>Email</th>
-<td><?php echo $user['email']; ?></td>
-</tr>
+        <a href="../logout.php"
+            class="btn btn-danger mb-3">
+            Logout
+        </a>
 
-<tr>
-<th>Role</th>
-<td><?php echo $user['role']; ?></td>
-</tr>
+        <table class="table table-bordered">
 
-<tr>
-<th>Mobile</th>
-<td><?php echo $user['mobile']; ?></td>
-</tr>
+            <tr>
+                <th>Name</th>
+                <td><?php echo $user['name']; ?></td>
+            </tr>
 
-<tr>
-<th>Gender</th>
-<td><?php echo $user['gender']; ?></td>
-</tr>
+            <tr>
+                <th>Email</th>
+                <td><?php echo $user['email']; ?></td>
+            </tr>
 
-<tr>
-<th>Course</th>
-<td><?php echo $user['course']; ?></td>
-</tr>
+            <tr>
+                <th>Role</th>
+                <td><?php echo $user['role']; ?></td>
+            </tr>
 
-<tr>
-<th>Semester</th>
-<td><?php echo $user['semester']; ?></td>
-</tr>
+            <tr>
+                <th>Mobile</th>
+                <td><?php echo $user['mobile']; ?></td>
+            </tr>
 
-<tr>
-<th>Address</th>
-<td><?php echo $user['address']; ?></td>
-</tr>
+            <tr>
+                <th>Gender</th>
+                <td><?php echo $user['gender']; ?></td>
+            </tr>
 
-</table>
+            <tr>
+                <th>Course</th>
+                <td><?php echo $user['course']; ?></td>
+            </tr>
 
-</div>
+            <tr>
+                <th>Semester</th>
+                <td><?php echo $user['semester']; ?></td>
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td><?php echo $user['address']; ?></td>
+            </tr>
+
+        </table>
+
+    </div>
 
 </body>
+
 </html>

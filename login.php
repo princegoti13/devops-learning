@@ -4,9 +4,8 @@ include 'db.php';
 
 $message = "";
 
-if(isset($_POST['login']))
-{
-    $email = mysqli_real_escape_string($conn,$_POST['email']);
+if (isset($_POST['login'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = MD5($_POST['password']);
 
     $query = mysqli_query(
@@ -16,8 +15,7 @@ if(isset($_POST['login']))
          AND password='$password'"
     );
 
-    if(mysqli_num_rows($query) > 0)
-    {
+    if (mysqli_num_rows($query) > 0) {
         $user = mysqli_fetch_assoc($query);
 
         $_SESSION['user_id'] = $user['id'];
@@ -27,17 +25,12 @@ if(isset($_POST['login']))
         $message = "Login Successful";
         $messageType = "success";
 
-if($user['role'] == 'admin')
-{
-    $redirectPage = "admin/dashboard.php";
-}
-else
-{
-    $redirectPage = "student/profile.php";
-}
-    }
-    else
-    {
+        if ($user['role'] == 'admin') {
+            $redirectPage = "admin/dashboard.php";
+        } else {
+            $redirectPage = "student/profile.php";
+        }
+    } else {
         $message = "Invalid Email Or Password";
     }
 }
@@ -45,65 +38,68 @@ else
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-    <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-        <div class="col-md-5">
+            <div class="col-md-5">
 
-            <div class="card shadow p-4">
+                <div class="card shadow p-4">
 
-                <h2 class="text-center mb-4">
-                    Student Login
-                </h2>
+                    <h2 class="text-center mb-4">
+                        Student Login
+                    </h2>
 
-                <?php
-                if($message != "")
-                {
-                    echo "<div class='alert alert-$messageType'>$message</div>";
-                }
-                ?>
+                    <?php
+                    if ($message != "") {
+                        echo "<div class='alert alert-$messageType'>$message</div>";
+                    }
+                    ?>
 
-                <form method="post">
+                    <form method="post">
 
-                    <div class="mb-3">
-                        <label>Email</label>
+                        <div class="mb-3">
+                            <label>Email</label>
 
-                        <input type="email"
-                               name="email"
-                               class="form-control"
-                               required>
-                    </div>
+                            <input type="email"
+                                name="email"
+                                class="form-control"
+                                required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label>Password</label>
+                        <div class="mb-3">
+                            <label>Password</label>
 
-                        <input type="password"
-                               name="password"
-                               class="form-control"
-                               required>
-                    </div>
+                            <input type="password"
+                                name="password"
+                                class="form-control"
+                                required>
+                        </div>
 
-                    <input type="submit"
-                           name="login"
-                           value="Login"
-                           class="btn btn-primary w-100">
+                        <input type="submit"
+                            name="login"
+                            value="Login"
+                            class="btn btn-primary w-100">
 
-                    <br><br>
+                        <br><br>
 
-                    <a href="register.php"
-                       class="btn btn-success w-100">
-                        Register
-                    </a>
+                        <a href="register.php"
+                            class="btn btn-success w-100">
+                            Register
+                        </a>
 
-                </form>
+                    </form>
+
+                </div>
 
             </div>
 
@@ -111,25 +107,20 @@ else
 
     </div>
 
-</div>
+    <script>
+        <?php
+        if (isset($redirectPage)) {
+        ?>
 
-<script>
+            setTimeout(function() {
+                window.location.href = "<?php echo $redirectPage; ?>";
+            }, 3000);
 
-<?php
-if(isset($redirectPage))
-{
-?>
-
-setTimeout(function()
-{
-    window.location.href = "<?php echo $redirectPage; ?>";
-}, 3000);
-
-<?php
-}
-?>
-
-</script>
+        <?php
+        }
+        ?>
+    </script>
 
 </body>
+
 </html>

@@ -1,6 +1,8 @@
 <?php
 session_start();
-include '../db.php';
+require_once __DIR__ . '/../db.php';
+
+/** @var mysqli $conn */
 
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin')
 {
