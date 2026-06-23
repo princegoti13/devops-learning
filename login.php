@@ -34,6 +34,7 @@ if (isset($_POST['login'])) {
         }
     } else {
         $message = "Invalid Email Or Password";
+        $messageType = "danger";
     }
 }
 ?>
