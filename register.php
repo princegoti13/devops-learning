@@ -106,7 +106,7 @@ if(isset($_POST['register']))
                 <?php
                 if($message != "")
                 {
-                    echo "<div class='alert alert-$messageType'>$message</div>";
+                    echo "<div id='msgBox' class='alert alert-$messageType'>$message</div>";
                 }
                 ?>
 
@@ -213,6 +213,32 @@ if(isset($_POST['register']))
     </div>
 
 </div>
+<script>
 
+var msg = document.getElementById("msgBox");
+
+if(msg)
+{
+    setTimeout(function()
+    {
+        msg.style.display = "none";
+    },3000);
+}
+
+<?php
+if($message == "Registration Successful")
+{
+?>
+
+setTimeout(function()
+{
+    window.location.href = "login.php";
+},3000);
+
+<?php
+}
+?>
+
+</script>
 </body>
 </html>
