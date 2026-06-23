@@ -3,6 +3,7 @@ session_start();
 include 'db.php';
 
 $message = "";
+$messageType = "";
 
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -11,28 +12,23 @@ if (isset($_POST['login'])) {
     $query = mysqli_query(
         $conn,
         "SELECT * FROM users
-        WHERE email='$email'
-        AND password='$password'
-        AND role='student'"
+         WHERE email='$email'
+         AND password='$password'
+         AND role='admin'"
     );
 
-    if (mysqli_num_rows($query) > 0) {
+    if (mysqli_num_rows($query) == 1) {
         $user = mysqli_fetch_assoc($query);
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
 
-        $message = "Login Successful";
+        $message = "Admin Login Successful";
         $messageType = "success";
-
-        if ($user['role'] == 'admin') {
-            $redirectPage = "admin/dashboard.php";
-        } else {
-            $redirectPage = "student/profile.php";
-        }
     } else {
-        $message = "Invalid Email Or Password";
+        $message = "Invalid Admin Credentials";
+        $messageType = "danger";
     }
 }
 ?>
@@ -41,9 +37,11 @@ if (isset($_POST['login'])) {
 <html>
 
 <head>
-    <title>Login</title>
+
+    <title>Admin Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -57,7 +55,7 @@ if (isset($_POST['login'])) {
                 <div class="card shadow p-4">
 
                     <h2 class="text-center mb-4">
-                        Student Login
+                        Admin Login
                     </h2>
 
                     <?php
@@ -69,34 +67,31 @@ if (isset($_POST['login'])) {
                     <form method="post">
 
                         <div class="mb-3">
+
                             <label>Email</label>
 
                             <input type="email"
                                 name="email"
                                 class="form-control"
                                 required>
+
                         </div>
 
                         <div class="mb-3">
+
                             <label>Password</label>
 
                             <input type="password"
                                 name="password"
                                 class="form-control"
                                 required>
+
                         </div>
 
                         <input type="submit"
                             name="login"
-                            value="Login"
-                            class="btn btn-primary w-100">
-
-                        <br><br>
-
-                        <a href="register.php"
-                            class="btn btn-success w-100">
-                            Register
-                        </a>
+                            value="Admin Login"
+                            class="btn btn-danger w-100">
 
                     </form>
 
@@ -108,19 +103,19 @@ if (isset($_POST['login'])) {
 
     </div>
 
-    <script>
-        <?php
-        if (isset($redirectPage)) {
-        ?>
+    <?php
+    if ($message == "Admin Login Successful") {
+    ?>
 
+        <script>
             setTimeout(function() {
-                window.location.href = "<?php echo $redirectPage; ?>";
+                window.location.href = "admin/dashboard.php";
             }, 3000);
+        </script>
 
-        <?php
-        }
-        ?>
-    </script>
+    <?php
+    }
+    ?>
 
 </body>
 
