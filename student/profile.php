@@ -1,11 +1,12 @@
 <?php
+session_start();
 
 echo "ADMIN SESSION ID: ";
 echo $_SESSION['user_id'];
 echo "<br>";
 echo $_SESSION['role'];
+echo "<br>";
 
-session_start();
 require_once __DIR__ . '/../db.php';
 
 
