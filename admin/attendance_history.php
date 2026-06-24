@@ -14,8 +14,11 @@ $result = mysqli_query(
      FROM attendance
      INNER JOIN users
      ON attendance.student_id = users.id
-     ORDER BY attendance_date DESC,
-              lecture_no ASC"
+     ORDER BY
+        attendance_date DESC,
+        subject ASC,
+        lecture_no ASC,
+        users.name ASC"
 );
 ?>
 
@@ -51,19 +54,41 @@ $result = mysqli_query(
             <?php
 
             $currentDate = "";
+            $currentSubject = "";
 
             while ($row = mysqli_fetch_assoc($result)) {
+                // Date Change
                 if ($currentDate != $row['attendance_date']) {
                     $currentDate = $row['attendance_date'];
+                    $currentSubject = "";
             ?>
 
                     <tr class="table-dark">
 
-                        <td colspan="6">
+                        <td colspan="5">
+
+                            <h4 class="mb-0">
+                                📅 Date : <?php echo $currentDate; ?>
+                            </h4>
+
+                        </td>
+
+                    </tr>
+
+                <?php
+                }
+
+                // Subject Change
+                if ($currentSubject != $row['subject']) {
+                    $currentSubject = $row['subject'];
+                ?>
+
+                    <tr class="table-primary">
+
+                        <td colspan="5">
 
                             <h5 class="mb-0">
-                                📅 Date :
-                                <?php echo $currentDate; ?>
+                                📚 Subject : <?php echo $currentSubject; ?>
                             </h5>
 
                         </td>
@@ -74,7 +99,6 @@ $result = mysqli_query(
 
                         <th>ID</th>
                         <th>Student</th>
-                        <th>Subject</th>
                         <th>Lecture</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -90,8 +114,6 @@ $result = mysqli_query(
                     <td><?php echo $row['id']; ?></td>
 
                     <td><?php echo $row['name']; ?></td>
-
-                    <td><?php echo $row['subject']; ?></td>
 
                     <td>
                         Lecture <?php echo $row['lecture_no']; ?>
