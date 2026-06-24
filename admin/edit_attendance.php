@@ -31,6 +31,14 @@ if (isset($_POST['update'])) {
 
     $message = "Attendance Updated Successfully";
 
+    echo "
+<script>
+setTimeout(function(){
+    window.location='attendance_history.php';
+},3000);
+</script>
+";
+
     $query = mysqli_query(
         $conn,
         "SELECT * FROM attendance

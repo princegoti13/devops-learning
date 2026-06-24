@@ -50,6 +50,14 @@ if (isset($_POST['save'])) {
     }
 
     $message = "Attendance Saved Successfully";
+
+    echo "
+<script>
+setTimeout(function(){
+    window.location='attendance_history.php';
+},3000);
+</script>
+";
 }
 ?>
 

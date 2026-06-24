@@ -41,6 +41,14 @@ if (isset($_POST['change'])) {
         );
 
         $message = "Password Changed Successfully";
+
+        echo "
+<script>
+setTimeout(function(){
+    window.location='profile.php';
+},3000);
+</script>
+";
         $messageType = "success";
     }
 }

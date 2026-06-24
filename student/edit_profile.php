@@ -61,6 +61,14 @@ if (isset($_POST['update'])) {
 
     if (mysqli_query($conn, $sql)) {
         $message = "Profile Updated Successfully";
+
+        echo "
+<script>
+setTimeout(function(){
+    window.location='profile.php';
+},3000);
+</script>
+";
     } else {
         $message = mysqli_error($conn);
     }
