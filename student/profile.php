@@ -1,11 +1,8 @@
 <?php
-echo $_SESSION['user_id'];
-echo "<br>";
-echo $_SESSION['role'];
-exit;
 
 session_start();
 require_once __DIR__ . '/../db.php';
+
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'student') {
     header("Location: ../login.php");
