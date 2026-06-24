@@ -1,4 +1,10 @@
 <?php
+
+echo "ADMIN SESSION ID: ";
+echo $_SESSION['user_id'];
+echo "<br>";
+echo $_SESSION['role'];
+
 session_start();
 require_once __DIR__ . '/../db.php';
 
@@ -155,7 +161,7 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
                         <h5>Female Students</h5>
                     </div>
                 </div>
-            </div>            
+            </div>
 
         </div>
 
@@ -240,7 +246,7 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
                     <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['mobile']; ?></td>
                     <td><?php echo $row['course']; ?></td>
-                    <td><?php echo $row['semester']; ?></td>                    
+                    <td><?php echo $row['semester']; ?></td>
 
                     <td>
 
