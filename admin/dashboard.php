@@ -2,8 +2,6 @@
 session_start();
 require_once __DIR__ . '/../db.php';
 
-/** @var mysqli $conn */
-
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location: ../login.php");
     exit();
@@ -123,6 +121,11 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
             Welcome,
             <b><?php echo $_SESSION['name']; ?></b>
         </p>
+
+        <a href="attendance.php"
+            class="btn btn-success mb-3">
+            Attendance
+        </a>
 
         <a href="../logout.php"
             class="btn btn-danger mb-3">
