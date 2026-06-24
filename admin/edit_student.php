@@ -124,18 +124,35 @@ $row = mysqli_fetch_assoc($query);
 
                 <select name="course" class="form-control" required>
 
-                    <option value="">Select Course</option>
+                    <option value="BCA"
+                        <?php if ($user['course'] == "BCA") echo "selected"; ?>>
+                        BCA
+                    </option>
 
-                    <option value="BCA">BCA</option>
-                    <option value="BBA">BBA</option>
-                    <option value="BCom">BCom</option>
-                    <option value="BA">BA</option>
-                    <option value="BSc">BSc</option>
-                    <option value="BTech">BTech</option>
-                    <option value="BEd">BEd</option>
-                    <option value="BPharm">BPharm</option>
-                    <option value="BHM">BHM</option>
-                    <option value="BSW">BSW</option>
+                    <option value="BBA"
+                        <?php if ($user['course'] == "BBA") echo "selected"; ?>>
+                        BBA
+                    </option>
+
+                    <option value="BCom"
+                        <?php if ($user['course'] == "BCom") echo "selected"; ?>>
+                        BCom
+                    </option>
+
+                    <option value="BA"
+                        <?php if ($user['course'] == "BA") echo "selected"; ?>>
+                        BA
+                    </option>
+
+                    <option value="BSc"
+                        <?php if ($user['course'] == "BSc") echo "selected"; ?>>
+                        BSc
+                    </option>
+
+                    <option value="BTech"
+                        <?php if ($user['course'] == "BTech") echo "selected"; ?>>
+                        BTech
+                    </option>
 
                 </select>
             </div>
@@ -145,14 +162,35 @@ $row = mysqli_fetch_assoc($query);
 
                 <select name="semester" class="form-control" required>
 
-                    <option value="">Select Semester</option>
+                    <option value="1"
+                        <?php if ($user['semester'] == "1") echo "selected"; ?>>
+                        Semester 1
+                    </option>
 
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="4">Semester 4</option>
-                    <option value="5">Semester 5</option>
-                    <option value="6">Semester 6</option>
+                    <option value="2"
+                        <?php if ($user['semester'] == "2") echo "selected"; ?>>
+                        Semester 2
+                    </option>
+
+                    <option value="3"
+                        <?php if ($user['semester'] == "3") echo "selected"; ?>>
+                        Semester 3
+                    </option>
+
+                    <option value="4"
+                        <?php if ($user['semester'] == "4") echo "selected"; ?>>
+                        Semester 4
+                    </option>
+
+                    <option value="5"
+                        <?php if ($user['semester'] == "5") echo "selected"; ?>>
+                        Semester 5
+                    </option>
+
+                    <option value="6"
+                        <?php if ($user['semester'] == "6") echo "selected"; ?>>
+                        Semester 6
+                    </option>
 
                 </select>
             </div>
