@@ -65,6 +65,11 @@ $user = mysqli_fetch_assoc($query);
             Edit Profile
         </a>
 
+        <a href="attendance.php"
+            class="btn btn-info mb-3">
+            My Attendance
+        </a>
+
         <a href="change_password.php"
             class="btn btn-secondary mb-3">
             Change Password
