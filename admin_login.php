@@ -51,6 +51,8 @@ if (isset($_POST['login'])) {
     <title>Admin Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 
@@ -103,9 +105,9 @@ if (isset($_POST['login'])) {
 
                                 <button type="button"
                                     class="btn btn-outline-secondary"
-                                    onclick="togglePassword()">
+                                    onclick="togglePassword('password','eye1')">
 
-                                    👁
+                                    <i id="eye1" class="bi bi-eye"></i>
 
                                 </button>
 
