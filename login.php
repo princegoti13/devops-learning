@@ -103,6 +103,12 @@ if (isset($_POST['login'])) {
 
                         </div>
 
+                        <div class="text-end mt-2">
+                            <a href="forgot_password.php">
+                                Forgot Password?
+                            </a>
+                        </div>
+
                         <input type="submit"
                             name="login"
                             value="Login"
@@ -148,7 +154,7 @@ if (isset($_POST['login'])) {
                 password.type = "password";
             }
         }
-    </script>    
+    </script>
 
 </body>
 
