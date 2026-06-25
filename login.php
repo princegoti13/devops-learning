@@ -93,9 +93,9 @@ if (isset($_POST['login'])) {
 
                                 <button type="button"
                                     class="btn btn-outline-secondary"
-                                    onclick="togglePassword()">
+                                    onclick="togglePassword('confirm_password','eye2')">
 
-                                    👁
+                                    <i id="eye2" class="bi bi-eye"></i>
 
                                 </button>
 
