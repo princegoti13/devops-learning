@@ -46,7 +46,7 @@ if (isset($_POST['change'])) {
 <script>
 setTimeout(function(){
     window.location='profile.php';
-},1000);
+},1500);
 </script>
 ";
         $messageType = "success";

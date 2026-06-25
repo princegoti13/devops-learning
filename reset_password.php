@@ -45,7 +45,7 @@ if (isset($_POST['reset'])) {
         <script>
         setTimeout(function(){
             window.location='login.php';
-        },3000);
+        },1500);
         </script>";
     }
 }

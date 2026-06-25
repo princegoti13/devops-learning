@@ -50,7 +50,7 @@ if (isset($_POST['update'])) {
 <script>
 setTimeout(function(){
     window.location='dashboard.php';
-},1000);
+},1500);
 </script>
 ";
     } else {

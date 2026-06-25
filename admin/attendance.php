@@ -55,7 +55,7 @@ if (isset($_POST['save'])) {
 <script>
 setTimeout(function(){
     window.location='dashboard.php';
-},3000);
+},1500);
 </script>
 ";
 }

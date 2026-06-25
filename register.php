@@ -251,7 +251,7 @@ if (isset($_POST['register'])) {
 
             setTimeout(function() {
                 window.location.href = "login.php";
-            }, 3000);
+            }, 1500);
 
         <?php
         }

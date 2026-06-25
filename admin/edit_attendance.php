@@ -35,7 +35,7 @@ if (isset($_POST['update'])) {
 <script>
 setTimeout(function(){
     window.location='attendance_history.php';
-},1000);
+},1500);
 </script>
 ";
 

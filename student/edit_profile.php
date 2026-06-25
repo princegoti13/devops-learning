@@ -97,7 +97,7 @@ if (isset($_POST['update'])) {
 <script>
 setTimeout(function(){
     window.location='profile.php';
-},3000);
+},1500);
 </script>
 ";
         } else {

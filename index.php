@@ -201,7 +201,7 @@ setTimeout(function()
         msg.remove();
     }
 
-},3000);
+},1500);
 
 </script>
 
